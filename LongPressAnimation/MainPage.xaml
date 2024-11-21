@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LongPressAnimation.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <Grid>
+        <Border
+            x:Name="LongPressButton"
+            BackgroundColor="Red"
+            HeightRequest="50"
+            StrokeShape="RoundRectangle 10"
+            StrokeThickness="0"
+            WidthRequest="200">
+            <Grid>
+                <!--  Progress overlay  -->
+                <BoxView
+                    x:Name="ProgressOverlay"
+                    BackgroundColor="LightPink"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Fill"
+                    WidthRequest="0" />
+
+                <!--  Button Text  -->
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="PRESS AND HOLD TO DELETE"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <!--  LongPressCommand  -->
+            <Border.Behaviors>
+                <toolkit:TouchBehavior CurrentTouchStateChanged="TouchBehavior_CurrentTouchStateChanged" LongPressCommand="{Binding Source={x:Reference LongPressButton}, Path=BindingContext.LongPressCommand}" />
+            </Border.Behaviors>
+        </Border>
+
+    </Grid>
+
+</ContentPage>
